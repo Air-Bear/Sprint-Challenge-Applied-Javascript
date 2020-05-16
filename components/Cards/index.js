@@ -22,7 +22,6 @@
 const cardsContainer = document.getElementsByClassName("cards-container");
 
 axios.get("https://lambda-times-backend.herokuapp.com/articles").then(response => {
-	console.log(Object.values(response.data.articles));
 	var responseArr = Object.values(response.data.articles);
 
 	responseArr.forEach(topics => {
