@@ -17,3 +17,69 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+const carouselContainer = document.getElementsByClassName("carousel-container");
+
+var index = 0;
+
+carouselContainer[0].append(carouselCreate());
+
+const leftBtn = document.querySelector(".carousel .left-button");
+const rightBtn = document.querySelector(".carousel .right-button");
+const imgs = document.querySelectorAll(".carousel img");
+
+window.addEventListener("load", imgDisplay());
+
+leftBtn.addEventListener("click", (event) => {
+    if(index != 0){
+        imgHide();
+        index--;
+        imgDisplay();
+    }
+});
+
+rightBtn.addEventListener("click", (event) => {
+    if(index < imgs.length-1){
+        imgHide();
+        index++;
+        imgDisplay();
+    }
+});
+
+function carouselCreate(){
+    const carouselDiv = document.createElement("div");
+    const leftBtnDiv = document.createElement("div");
+    const img1 = document.createElement("img");
+    const img2 = document.createElement("img");
+    const img3 = document.createElement("img");
+    const img4 = document.createElement("img");
+    const rightBtnDiv = document.createElement("div");
+
+    carouselDiv.classList.add("carousel");
+    leftBtnDiv.classList.add("left-button");
+    rightBtnDiv.classList.add("right-button");
+
+    leftBtnDiv.textContent = "<";
+    rightBtnDiv.textContent = ">";
+
+    img1.src = "./assets/carousel/mountains.jpeg";
+    img2.src = "./assets/carousel/computer.jpeg";
+    img3.src = "./assets/carousel/trees.jpeg";
+    img4.src = "./assets/carousel/turntable.jpeg";
+
+    carouselDiv.append(leftBtnDiv);
+    carouselDiv.append(img1);
+    carouselDiv.append(img2);
+    carouselDiv.append(img3);
+    carouselDiv.append(img4);
+    carouselDiv.append(rightBtnDiv);
+
+    return carouselDiv;
+}
+
+function imgDisplay(){
+    imgs[index].style.display = "flex";
+}
+function imgHide(){
+    imgs[index].style.display = "none";
+}
